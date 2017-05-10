@@ -16,16 +16,14 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   GPS.msg
-  ExtendedCommand.msg
-  ServoOutputRaw.msg
+  OutputRaw.msg
+  RCRaw.msg
   Command.msg
-  FW_State.msg
-  FW_Controller_Commands.msg
-  FW_Current_Path.msg
-  FW_Waypoint.msg
-  FW_Attitude_Commands.msg
-  MR_Controller_Commands.msg
+  Barometer.msg
+  Airspeed.msg
   Attitude.msg
+  State.msg
+  Status.msg
 )
 
 generate_messages(
@@ -46,6 +44,8 @@ add_definitions(-std=c++11)
 add_library(fcu_common
   src/simple_pid.cpp
   include/fcu_common/simple_pid.h
+  src/turbomath.cpp
+  include/fcu_common/turbomath.h
 )
 target_link_libraries(fcu_common ${catkin_LIBRARIES})
 
